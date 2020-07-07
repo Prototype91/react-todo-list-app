@@ -123,6 +123,7 @@ const App = () => {
         onlyActive={onlyActive}
         onlyCompleted={onlyCompleted}
         displayAll={displayAll}
+        filter={filter}
       />
     </section>
   );

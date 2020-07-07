@@ -1,13 +1,15 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './Infos.css';
 
 const Infos = (props) => {
 
+    let filter = props.filter;
+
     let count = props.todoList.reduce(function (accumulator, currentValue) {
         if (currentValue.done === false) {
-            return (accumulator + 1)
+            return (accumulator + 1);
         } else {
-            return accumulator
+            return accumulator;
         }
     }, 0);
 
@@ -16,13 +18,13 @@ const Infos = (props) => {
             <span className="todo-count"><strong>{count}</strong> item left</span>
             <ul className="filters">
                 <li>
-                    <a className="selected" href="#/" onClick={() => props.displayAll()}>All</a>
+                    <a className={filter === 'all' ? 'selected' : ""} href="#/" onClick={() => props.displayAll()}>All</a>
                 </li>
                 <li>
-                    <a href="#/active" onClick={() => props.onlyActive()}>Active</a>
+                    <a className={filter === 'active' ? 'selected' : ""} href="#/active" onClick={() => props.onlyActive()}>Active</a>
                 </li>
                 <li>
-                    <a href="#/completed" onClick={() => props.onlyCompleted()}>Completed</a>
+                    <a className={filter === 'completed' ? 'selected' : ""} href="#/completed" onClick={() => props.onlyCompleted()}>Completed</a>
                 </li>
             </ul>
             <button className="clear-completed" onClick={() => props.deleteAllCompleted()}>Clear completed</button>
