@@ -8,7 +8,7 @@ const Todo = (props) => {
         if (props.edition.edited && props.todo.id === props.edition.id) {
             classes.push('editing');
         }
-        // add class done
+        // add class completed
         classes.push('completed')
     } else if (props.edition.edited && props.todo.id === props.edition.id) {
         classes.push('editing');
@@ -21,10 +21,10 @@ const Todo = (props) => {
                     className="toggle"
                     type="checkbox"
                     readOnly
-                    onClick={(e) => props.onChecked(e, props.todo.id)}
+                    onClick={() => props.onChecked(props.todo.id)}
                     checked={props.todo.done ? true : false}
                 />
-                <label onDoubleClick={(e) => props.editTask(e, props.todo.id)}>{props.todo.title}</label>
+                <label onDoubleClick={() => props.editTask(props.todo.id)}>{props.todo.title}</label>
                 <button className="destroy" onClick={(e) => props.deleteTask(e, props.todo.id)}></button>
             </div>
             <input className="edit" defaultValue={props.todo.title} onKeyDown={(e) => props.updateTitle(e)} />

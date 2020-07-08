@@ -5,7 +5,7 @@ const Infos = (props) => {
 
     let filter = props.filter;
 
-    let count = props.todoList.reduce(function (accumulator, currentValue) {
+    let count = props.todoList.reduce((accumulator, currentValue) => {
         if (currentValue.done === false) {
             return (accumulator + 1);
         } else {

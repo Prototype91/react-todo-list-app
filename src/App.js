@@ -18,19 +18,19 @@ const App = () => {
 
   const [edition, updateEdition] = useState({ edited: false, id: null });
 
-  const pressEnter = (event) => {
-    if (event.key === 'Enter' && event.target.value.trim() !== '') {
+  const pressEnter = (e) => {
+    if (e.key === 'Enter' && e.target.value.trim() !== '') {
       updateTodoList(
         [
-          { title: event.target.value, done: false, id: uniqid() },
+          { title: e.target.value, done: false, id: uniqid() },
           ...todoList
         ]
       );
-      event.target.value = '';
+      e.target.value = '';
     }
   }
 
-  const onChecked = (e, _id) => {
+  const onChecked = (_id) => {
     updateTodoList(
       todoList.map((todo) => {
         if (todo.id === _id) {
@@ -56,27 +56,23 @@ const App = () => {
   }
 
   const deleteAllCompleted = () => {
-    console.log('All Completed Deleted');
     updateTodoList(todoList.filter(todo => todo.done !== true));
   }
 
   const displayAll = () => {
-    console.log('All Displayed');
     updateFilter('all');
   }
 
   const onlyActive = () => {
-    console.log('Only Active');
     updateFilter('active');
   }
 
   const onlyCompleted = () => {
-    console.log("Only Completed");
     updateFilter("completed");
   }
 
-  const editTask = (e, id) => {
-    updateEdition({ edited: true, id: id });
+  const editTask = (_id) => {
+    updateEdition({ edited: true, id: _id });
   }
 
   const updateTitle = (e) => {
@@ -94,7 +90,7 @@ const App = () => {
   return (
     <section className="todoapp">
       <header className="header">
-        <h1>Todo list</h1>
+        <h1>Todo List</h1>
         <input
           id='input-add'
           className="new-todo"

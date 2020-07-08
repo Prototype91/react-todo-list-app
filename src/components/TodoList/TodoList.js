@@ -1,17 +1,23 @@
 import React from 'react';
-import Todo from '../Todo/Todo';
+import Todo from './Todo/Todo';
 import './TodoList.css';
 
 const TodoList = (props) => {
     let filter = props.filter;
     let filteredArray = [];
 
-    if (filter === 'all') {
-        filteredArray = props.todoList;
-    } else if (filter === 'completed') {
-        filteredArray = props.todoList.filter(todo => todo.done === true);
-    } else if (filter === 'active') {
-        filteredArray = props.todoList.filter(todo => todo.done === false);
+    switch (filter) {
+        case 'all':
+            filteredArray = props.todoList;
+            break;
+        case 'completed':
+            filteredArray = props.todoList.filter(todo => todo.done === true);
+            break;
+        case 'active':
+            filteredArray = props.todoList.filter(todo => todo.done === false);
+            break;
+        default:
+            filteredArray = props.todoList;
     }
 
     return (
